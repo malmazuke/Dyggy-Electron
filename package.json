@@ -1,13 +1,13 @@
 {
-  "name": "tray",
-  "version": "1.0.0",
-  "description": "Tray Tutorial",
+  "name": "DyggyDyggyLoad",
+  "version": "0.1.0",
+  "description": "Tray-based utility for switching between Dygma keyboard profiles using custom key combos",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mark Feaver",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "devDependencies": {
     "electron": "^28.2.1"
   }
