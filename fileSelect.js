@@ -1,4 +1,4 @@
-const { dialog } = require('electron');
+const { dialog, BrowserWindow } = require('electron');
 const os = require('os');
 
 let defaultPath;
@@ -11,11 +11,20 @@ switch (os.platform()) {
 }
 
 function launchFileSelect() {
-  dialog.showOpenDialog({ properties: ['openFile'], defaultPath, filters: [{ name: 'JSON Files', extensions: ['json'] }] })
+  // TODO: We currently add this workaround in order to get focus on the openFile dialog. Let's delete it once we add a custom tray-window
+  let tempWindow = new BrowserWindow({ show: false, frame: false, transparent: true, skipTaskbar: true, alwaysOnTop: true, webPreferences: { nodeIntegration: true } });
+  tempWindow.loadURL('about:blank');
+  tempWindow.focus();
+
+  dialog.showOpenDialog(tempWindow, { properties: ['openFile'], defaultPath, filters: [{ name: 'JSON Files', extensions: ['json'] }] })
     .then((result) => {
       if (result) {
         console.log(result);
       }
+    }).catch((err) => {
+      console.log(err);
+    }).finally(() => {
+      tempWindow.close();
     });
 }
 
