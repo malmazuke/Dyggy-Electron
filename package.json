@@ -1,0 +1,35 @@
+{
+  "name": "electron-tray-window",
+  "version": "1.2.7",
+  "description": "A package for generate custom tray windows with Electron.js",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sfatihk/electron-tray-window.git"
+  },
+  "keywords": [
+    "electron",
+    "tray",
+    "window",
+    "popup",
+    "menu"
+  ],
+  "author": "Seyyid Fatih KOÇ",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sfatihk/electron-tray-window/issues"
+  },
+  "homepage": "https://github.com/sfatihk/electron-tray-window#readme",
+  "dependencies": {
+    "electron": "^28.2.1"
+  },
+  "peerDependencies": {
+    "electron": "^28.2.1"
+  }
+}
