@@ -9,6 +9,7 @@
   "author": "Mark Feaver",
   "license": "GPL-3.0",
   "devDependencies": {
-    "electron": "^28.2.1"
+    "electron": "^28.2.1",
+    "electron-tray-window": "file:./lib/electron-tray-window"
   }
 }
