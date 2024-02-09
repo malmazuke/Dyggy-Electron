@@ -1,15 +1,27 @@
-const { app, Tray, Menu, nativeImage, nativeTheme } = require('electron');
+const { app, Tray, Menu, nativeImage, nativeTheme, BrowserWindow } = require('electron');
 const path = require('path');
 const fileSelect = require('./fileSelect.js');
 
-let tray = null;
+let mainWindow;
+let tray;
 
 const iconPath = path.join(__dirname, 'assets', 'iconTemplate.png');
 const iconDarkPath = path.join(__dirname, 'assets', 'iconTemplateDark.png');
 
-app.whenReady().then(() => {
+app.on('ready', appReady);
+
+function appReady() {
   if (app.dock) app.dock.hide();
 
+  createMainWindow();
+  createTray();
+}
+
+function createMainWindow() {
+  mainWindow = new BrowserWindow( { show: false, webPreferences: { nodeIntegration: true } } );
+}
+
+function createTray() {
   tray = new Tray(nativeImage.createFromPath(getIcon()));
   
   const contextMenu = Menu.buildFromTemplate([
@@ -21,7 +33,7 @@ app.whenReady().then(() => {
   
   tray.setToolTip('This is my application.');
   tray.setContextMenu(contextMenu);
-});
+}
 
 function quitApplication() {
   try {

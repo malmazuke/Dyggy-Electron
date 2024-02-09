@@ -7,7 +7,9 @@ switch (os.platform()) {
     defaultPath = 'C:\\Windows';
     break;
   default:
-    defaultPath = `${os.homedir()}/Dygma/Backups`;
+    defaultPath = `${os.homedir()}/Library/Application Support/Bazecor/`;
+    // TODO: Add this back in for selecting the alternate config to switch to (after having selected a primary config)
+    // defaultPath = `${os.homedir()}/Dygma/Backups`;
 }
 
 function launchFileSelect() {
