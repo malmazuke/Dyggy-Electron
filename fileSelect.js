@@ -1,5 +1,6 @@
 const { dialog, BrowserWindow } = require('electron');
 const os = require('os');
+const fs = require('fs');
 
 let defaultPath;
 switch (os.platform()) {
@@ -22,12 +23,29 @@ function launchFileSelect() {
     .then((result) => {
       if (result) {
         console.log(result);
+
+        parseConfigFile(result.filePaths[0]);
       }
     }).catch((err) => {
       console.log(err);
     }).finally(() => {
       tempWindow.close();
     });
+}
+
+function parseConfigFile(fileName) {
+  fs.readFile(fileName, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading file:', err);
+      return;
+    }
+    try {
+      const parsedData = JSON.parse(data);
+      console.log('Parsed JSON data:', parsedData);
+    } catch (parseError) {
+      console.error('Error parsing JSON:', parseError);
+    }
+  });
 }
 
 module.exports = { launchFileSelect };
