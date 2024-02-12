@@ -1,5 +1,5 @@
 {
-  "name": "DyggyDyggyLoad",
+  "name": "Dyggy",
   "version": "0.1.0",
   "description": "Tray-based utility for switching between Dygma keyboard profiles using custom key combos",
   "main": "main.js",
@@ -9,6 +9,7 @@
   "author": "Mark Feaver",
   "license": "GPL-3.0",
   "devDependencies": {
+    "dygma-focus": "file:./lib/dygma-focus",
     "electron": "^28.2.1",
     "electron-tray-window": "file:./lib/electron-tray-window"
   }
